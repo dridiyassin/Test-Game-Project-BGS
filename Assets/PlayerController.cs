@@ -15,12 +15,16 @@ public class PlayerController : MonoBehaviour
 
     float currentDirection;
 
+    SpriteRenderer[] rendererChilds;
     
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        rendererChilds = GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -50,10 +54,11 @@ public class PlayerController : MonoBehaviour
 
         //Player Flips when walk left
         if (WalkDir == 3)
-            spriteRenderer.flipX = true;
+            FlipAll(true);
         else
-            spriteRenderer.flipX = false;
+            FlipAll(false);
     }
+
 
     public float GetDirection()
     {
@@ -69,5 +74,14 @@ public class PlayerController : MonoBehaviour
             currentDirection = 0;
         
         return currentDirection;
+    }
+
+    void FlipAll(bool cond)
+    {
+        spriteRenderer.flipX = cond;
+        foreach (SpriteRenderer sprR in rendererChilds)
+        {
+            sprR.flipX = cond;
+        }
     }
 }
