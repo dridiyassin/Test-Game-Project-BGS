@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Torso", menuName = "Clothing/Torso", order = 1)]
-public class TorsoClothing : Clothing
+[CreateAssetMenu(fileName = "New Legs", menuName = "Clothing/Legs", order = 2)]
+public class LegsClothing : Clothing
 {
     // Start is called before the first frame update
     void Start()

@@ -7,21 +7,26 @@ public class PlayerClothing : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //-1 Means Nothing
-    public int HairID = -1;
-    public int TorsoID = -1;
-    public int LegsID = -1;
-
+    [System.Serializable]
+    public struct Clips
+    {
+        public AnimationClip idleClip;
+        public AnimationClip downClip;
+        public AnimationClip upClip;
+        public AnimationClip rightClip;
+    }
 
     public Transform torso;
     public Transform legs;
     public Transform hair;
 
     public TorsoClothing torsoClothing;
+    public LegsClothing legsClothing;
+    public HairClothing hairClothing;
 
-    public AnimationClip downClip;
-    public AnimationClip upClip;
-    public AnimationClip rightClip;
+    public Clips torsoClips;
+    public Clips legsClips;
+    public Clips hairClips;
 
     Animator anim;
     
@@ -29,15 +34,21 @@ public class PlayerClothing : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        if (TorsoID != -1)
+        if (torsoClothing != null)
         {
-            UpdateClips();
+            UpdateClothesClips(torsoClips, torsoClothing, torso);
         }
         else
         {
-            downClip.ClearCurves();
-            upClip.ClearCurves();
-            rightClip.ClearCurves();
+            ClearClips(torsoClips);
+        }
+
+        if(hairClothing != null)
+        {
+            UpdateHairClips(hairClips, hairClothing, hair);
+        } else
+        {
+            ClearClips(hairClips);
         }
     }
 
@@ -47,21 +58,37 @@ public class PlayerClothing : MonoBehaviour
         
     }
 
-    void UpdateClips()
+    void ClearClips(Clips clips)
     {
-        UpdateClip(downClip, new Sprite[] { torsoClothing.torsoList[TorsoID].torsoSprites[0], torsoClothing.torsoList[TorsoID].torsoSprites[1], torsoClothing.torsoList[TorsoID].torsoSprites[2] });
-
-        UpdateClip(upClip, new Sprite[] { torsoClothing.torsoList[TorsoID].torsoSprites[3], torsoClothing.torsoList[TorsoID].torsoSprites[4], torsoClothing.torsoList[TorsoID].torsoSprites[5] });
-
-        UpdateClip(rightClip, new Sprite[] { torsoClothing.torsoList[TorsoID].torsoSprites[6], torsoClothing.torsoList[TorsoID].torsoSprites[7], torsoClothing.torsoList[TorsoID].torsoSprites[8] });
+        clips.idleClip.ClearCurves();
+        clips.downClip.ClearCurves();
+        clips.upClip.ClearCurves();
+        clips.rightClip.ClearCurves();
     }
 
-    void UpdateClip(AnimationClip clip, Sprite[] view)
+    void UpdateClothesClips(Clips clips, Clothing clothing, Transform affected)
+    {
+        UpdateClothesIdleClip(clips.idleClip, clothing.clothingList[0], affected);
+        UpdateClothesClip(clips.downClip, new Sprite[] { clothing.clothingList[0], clothing.clothingList[1], clothing.clothingList[2] }, affected);
+        UpdateClothesClip(clips.upClip, new Sprite[] { clothing.clothingList[3], clothing.clothingList[4], clothing.clothingList[5] }, affected);
+        UpdateClothesClip(clips.rightClip, new Sprite[] { clothing.clothingList[6], clothing.clothingList[7], clothing.clothingList[8] }, affected);
+
+    }
+
+    void UpdateHairClips(Clips clips , HairClothing cothing, Transform affected)
+    {
+        UpdateHairIdleClip(clips.idleClip, cothing.clothingList[0], affected);
+        UpdateHairClip(clips.downClip, cothing.clothingList[0], affected);
+        UpdateHairClip(clips.upClip, cothing.clothingList[1], affected);
+        UpdateHairClip(clips.rightClip, cothing.clothingList[2], affected);
+    }
+
+    void UpdateClothesClip(AnimationClip clip, Sprite[] view, Transform affected)
     {
 
         EditorCurveBinding spriteBinding = new EditorCurveBinding();
         spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = torso.name;
+        spriteBinding.path = affected.name;
         spriteBinding.propertyName = "m_Sprite";
 
         ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[4];
@@ -81,5 +108,62 @@ public class PlayerClothing : MonoBehaviour
 
         AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteKeyFrames);
 
+        
+
+    }
+
+    void UpdateClothesIdleClip(AnimationClip clip, Sprite idleClothing, Transform affected)
+    {
+
+        EditorCurveBinding spriteBinding = new EditorCurveBinding();
+        spriteBinding.type = typeof(SpriteRenderer);
+        spriteBinding.path = affected.name;
+        spriteBinding.propertyName = "m_Sprite";
+
+        ObjectReferenceKeyframe[] spriteIdleKeyFrames = new ObjectReferenceKeyframe[1];
+
+        spriteIdleKeyFrames[0].time = 0f;
+        spriteIdleKeyFrames[0].value = idleClothing;
+
+        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteIdleKeyFrames);
+    }
+
+
+
+    void UpdateHairClip(AnimationClip clip, Sprite view, Transform affected)
+    {
+
+        EditorCurveBinding spriteBinding = new EditorCurveBinding();
+        spriteBinding.type = typeof(SpriteRenderer);
+        spriteBinding.path = affected.name;
+        spriteBinding.propertyName = "m_Sprite";
+
+        ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[1];
+
+        spriteKeyFrames[0].time = 0f;
+        spriteKeyFrames[0].value = view;
+
+
+
+        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteKeyFrames);
+
+
+
+    }
+
+    void UpdateHairIdleClip(AnimationClip clip, Sprite idleClothing, Transform affected)
+    {
+
+        EditorCurveBinding spriteBinding = new EditorCurveBinding();
+        spriteBinding.type = typeof(SpriteRenderer);
+        spriteBinding.path = affected.name;
+        spriteBinding.propertyName = "m_Sprite";
+
+        ObjectReferenceKeyframe[] spriteIdleKeyFrames = new ObjectReferenceKeyframe[1];
+
+        spriteIdleKeyFrames[0].time = 0f;
+        spriteIdleKeyFrames[0].value = idleClothing;
+
+        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteIdleKeyFrames);
     }
 }
