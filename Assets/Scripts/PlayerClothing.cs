@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class PlayerClothing : MonoBehaviour
 {
@@ -29,11 +30,21 @@ public class PlayerClothing : MonoBehaviour
     public Clips hairClips;
 
     Animator anim;
-    
+
+    public static PlayerClothing Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        RefreshClothes();
+    }
+
+    void RefreshClothes()
+    {
         if (torsoClothing != null)
         {
             UpdateClothesClips(torsoClips, torsoClothing, torso);
@@ -43,19 +54,43 @@ public class PlayerClothing : MonoBehaviour
             ClearClips(torsoClips);
         }
 
-        if(hairClothing != null)
+        if (hairClothing != null)
         {
             UpdateHairClips(hairClips, hairClothing, hair);
-        } else
+        }
+        else
         {
             ClearClips(hairClips);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetClothing(Clothing clothingItem)
     {
-        
+        Type type = clothingItem.GetType();
+        if (type == typeof(TorsoClothing))
+            SetTorsoClothing((TorsoClothing)clothingItem);
+        else if (type == typeof(LegsClothing))
+            SetLegsClothing((LegsClothing)clothingItem);
+        else if (type == typeof(HairClothing))
+            SetHairClothing((HairClothing)clothingItem);
+    }
+    public void SetTorsoClothing(TorsoClothing clothingItem)
+    {
+        torsoClothing = clothingItem;
+        ClothingInventory.Instance.equipedTorsoSlot.slotItem = clothingItem;
+        RefreshClothes();
+    }
+    public void SetLegsClothing(LegsClothing clothingItem)
+    {
+        legsClothing = clothingItem;
+        ClothingInventory.Instance.equipedLegsSlot.slotItem = clothingItem;
+        RefreshClothes();
+    }
+    public void SetHairClothing(HairClothing clothingItem)
+    {
+
+        hairClothing = clothingItem;
+        ClothingInventory.Instance.equipedHairSlot.slotItem = clothingItem;
+        RefreshClothes();
     }
 
     void ClearClips(Clips clips)
