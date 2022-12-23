@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FishingArea
+  - ShopKeeper
   layers:
   - Default
   - TransparentFX

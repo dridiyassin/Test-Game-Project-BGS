@@ -5,14 +5,45 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public float Coins;
+    public static PlayerStats Instance;
+
+    public ShopKeeper currentShopKeeper;
+
+    bool isNearShop = false;
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            if(isNearShop)
+            {
+                ShopContent.Instance.shopPanel.SetActive(true);
+                ShopContent.Instance.UpdateContent();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("ShopKeeper"))
+        {
+            currentShopKeeper = other.gameObject.GetComponent<ShopKeeper>();
+            isNearShop = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("ShopKeeper"))
+        {
+            currentShopKeeper = null;
+            isNearShop = false;
+            ShopContent.Instance.shopPanel.SetActive(false);
+        }
     }
 }

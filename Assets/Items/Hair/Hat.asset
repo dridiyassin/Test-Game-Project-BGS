@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4d18f45124ddca47b61b0c5ebd0b3b2, type: 3}
-  m_Name: BlackHair
+  m_Name: Hat
   m_EditorClassIdentifier: 
-  buyPrice: 15
+  buyPrice: 50
   clothingList:
-  - {fileID: -172902696, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
-  - {fileID: 303948555, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
-  - {fileID: 993455580, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
+  - {fileID: 2007013426, guid: bc1284d8885677444a4c4b53dd585b64, type: 3}
+  - {fileID: -765263697, guid: bc1284d8885677444a4c4b53dd585b64, type: 3}
+  - {fileID: 220380093, guid: bc1284d8885677444a4c4b53dd585b64, type: 3}

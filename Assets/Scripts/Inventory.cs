@@ -40,13 +40,26 @@ public class Inventory : MonoBehaviour
             InventoryContent.Instance.UpdateUI();
         }
     }
+    public void AddItem(Clothing item)
+    {
+        if (clothingInventory.Count < maxSlots)
+        {
+            clothingInventory.Add(item);
+            ClothingInventory.Instance.UpdateUI();
+        }
+    }
+
+    public void RemoveItem(Clothing item)
+    {
+
+            clothingInventory.Remove(item);
+            ClothingInventory.Instance.UpdateUI();
+    }
+
     public void RemoveItem(Item item)
     {
-        if (itemsInventory.Count < maxSlots)
-        {
             itemsInventory.Remove(item);
             InventoryContent.Instance.UpdateUI();
-        }
     }
 
     // Update is called once per frame

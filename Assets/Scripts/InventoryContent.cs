@@ -14,19 +14,28 @@ public class InventoryContent : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        UpdateUI();
     }
 
+    // Update is called once per frame
+    void ClearUI()
+    {
+        foreach (var slot in slots)
+        {
+            slot.sprite = null;
+        }
+    }
     public void UpdateUI()
     {
-        List<Item> items = Inventory.Instance.itemsInventory;
-
-        for (int i = 0; i < items.Count; i++)
+        ClearUI();
+        for (int i = 0; i < Inventory.Instance.itemsInventory.Count; i++)
         {
-            slots[i].sprite = items[i].icon;
+            Debug.Log("Rerendring " + slots[i]);
+ 
+                slots[i].sprite = Inventory.Instance.itemsInventory[i].icon;
+
         }
     }
 }

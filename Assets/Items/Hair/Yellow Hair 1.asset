@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4d18f45124ddca47b61b0c5ebd0b3b2, type: 3}
-  m_Name: BlackHair
+  m_Name: Yellow Hair 1
   m_EditorClassIdentifier: 
   buyPrice: 15
   clothingList:
-  - {fileID: -172902696, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
-  - {fileID: 303948555, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
-  - {fileID: 993455580, guid: 4d4b4ff8448131644a3534c3abb3e5dd, type: 3}
+  - {fileID: -143690243, guid: 6eff90e20c688a742a08966f8483b564, type: 3}
+  - {fileID: 1271681842, guid: 6eff90e20c688a742a08966f8483b564, type: 3}
+  - {fileID: -452539730, guid: 6eff90e20c688a742a08966f8483b564, type: 3}
