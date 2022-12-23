@@ -17,7 +17,15 @@ public class Inventory : MonoBehaviour
 
 
     
+    public void AddItem(Item item)
+    {
+        itemsInventory.Add(item);
+    }
 
+    public void AddItem(Item[] items)
+    {
+        itemsInventory.AddRange(items);
+    }
 
     // Update is called once per frame
     void Update()

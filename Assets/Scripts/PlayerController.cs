@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     float currentDirection;
 
     SpriteRenderer[] rendererChilds;
+
+    FishingSystem fishingSystem;
     
     void Awake()
     {
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
 
         rendererChilds = GetComponentsInChildren<SpriteRenderer>();
+        fishingSystem = GetComponent<FishingSystem>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Walking", true);
             animator.SetFloat("Walking_Dir", WalkDir);
+            if (fishingSystem.isFishing)
+            {
+                fishingSystem.StopFishing();
+            }
         } else
         {
             animator.SetBool("Walking", false);
@@ -57,6 +64,9 @@ public class PlayerController : MonoBehaviour
             FlipAll(true);
         else
             FlipAll(false);
+
+        //Stop Fishing if fishing
+        
     }
 
 
@@ -82,6 +92,22 @@ public class PlayerController : MonoBehaviour
         foreach (SpriteRenderer sprR in rendererChilds)
         {
             sprR.flipX = cond;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("FishingArea"))
+        {
+            fishingSystem.canFish = true;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("FishingArea"))
+        {
+            fishingSystem.canFish = false;
         }
     }
 }
