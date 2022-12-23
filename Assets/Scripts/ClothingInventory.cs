@@ -50,4 +50,50 @@ public class ClothingInventory : MonoBehaviour
     {
         slt.slotButton.onClick.AddListener(delegate { PlayerClothing.Instance.SetClothing(slt.slotItem); });
     }
+
+
+    public void EquipTorso(TorsoClothing clothingItem)
+    {
+        equipedTorsoSlot.slotItem = clothingItem;
+        equipedTorsoSlot.slotButton.transform.GetChild(1).gameObject.SetActive(true);
+        equipedTorsoSlot.slotButton.transform.GetChild(1).GetComponent<Image>().sprite = clothingItem.clothingList[0];
+    }
+
+    public void EquipLegs(LegsClothing clothingItem)
+    {
+        equipedLegsSlot.slotItem = clothingItem;
+        equipedLegsSlot.slotButton.transform.GetChild(1).gameObject.SetActive(true);
+        equipedLegsSlot.slotButton.transform.GetChild(1).GetComponent<Image>().sprite = clothingItem.clothingList[0];
+    }
+
+    public void EquipHair(HairClothing clothingItem)
+    {
+        equipedHairSlot.slotItem = clothingItem;
+        equipedHairSlot.slotButton.transform.GetChild(1).gameObject.SetActive(true);
+        equipedHairSlot.slotButton.transform.GetChild(1).GetComponent<Image>().sprite = clothingItem.clothingList[0];
+    }
+    public void UnEquipTorso()
+    {
+        equipedTorsoSlot.slotItem = null;
+
+        equipedTorsoSlot.slotButton.transform.GetChild(1).gameObject.SetActive(false);
+        PlayerClothing.Instance.torsoClothing = null;
+        PlayerClothing.Instance.RefreshClothes();
+    }
+    public void UnEquipLegs()
+    {
+        equipedTorsoSlot.slotItem = null;
+
+        equipedLegsSlot.slotButton.transform.GetChild(1).gameObject.SetActive(false);
+        PlayerClothing.Instance.legsClothing = null;
+        PlayerClothing.Instance.RefreshClothes();
+    }
+    public void UnEquipHair()
+    {
+        equipedTorsoSlot.slotItem = null;
+
+        equipedHairSlot.slotButton.transform.GetChild(1).gameObject.SetActive(false);
+        PlayerClothing.Instance.hairClothing = null;
+        PlayerClothing.Instance.RefreshClothes();
+    }
 }

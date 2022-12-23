@@ -43,23 +43,27 @@ public class PlayerClothing : MonoBehaviour
         RefreshClothes();
     }
 
-    void RefreshClothes()
+    public void RefreshClothes()
     {
         if (torsoClothing != null)
         {
+            torso.gameObject.SetActive(true);
             UpdateClothesClips(torsoClips, torsoClothing, torso);
         }
         else
         {
+            torso.gameObject.SetActive(false);
             ClearClips(torsoClips);
         }
 
         if (hairClothing != null)
         {
+            hair.gameObject.SetActive(true);
             UpdateHairClips(hairClips, hairClothing, hair);
         }
         else
         {
+            hair.gameObject.SetActive(false);
             ClearClips(hairClips);
         }
     }
@@ -76,20 +80,20 @@ public class PlayerClothing : MonoBehaviour
     public void SetTorsoClothing(TorsoClothing clothingItem)
     {
         torsoClothing = clothingItem;
-        ClothingInventory.Instance.equipedTorsoSlot.slotItem = clothingItem;
+        ClothingInventory.Instance.EquipTorso(clothingItem);
         RefreshClothes();
     }
     public void SetLegsClothing(LegsClothing clothingItem)
     {
         legsClothing = clothingItem;
-        ClothingInventory.Instance.equipedLegsSlot.slotItem = clothingItem;
+        ClothingInventory.Instance.EquipLegs(clothingItem);
         RefreshClothes();
     }
     public void SetHairClothing(HairClothing clothingItem)
     {
 
         hairClothing = clothingItem;
-        ClothingInventory.Instance.equipedHairSlot.slotItem = clothingItem;
+        ClothingInventory.Instance.EquipHair(clothingItem);
         RefreshClothes();
     }
 
