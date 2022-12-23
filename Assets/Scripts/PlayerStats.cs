@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     // Start is called before the first frame update
     public float Coins;
+    public TextMeshProUGUI coinsTxt;
     public static PlayerStats Instance;
+
 
     public ShopKeeper currentShopKeeper;
 

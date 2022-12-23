@@ -81,7 +81,8 @@ public class ShopContent : MonoBehaviour
         {
                 slot.itemButton.interactable = false;
                 PlayerStats.Instance.Coins += slot.item.sellPrice;
-                Inventory.Instance.RemoveItem(slot.item);
+            PlayerStats.Instance.coinsTxt.text = "Coins:  " + PlayerStats.Instance.Coins.ToString();
+            Inventory.Instance.RemoveItem(slot.item);
                 UpdateContent();
                 slot.itemButton.onClick.RemoveAllListeners();
             
@@ -96,6 +97,7 @@ public class ShopContent : MonoBehaviour
             if (PlayerStats.Instance.Coins >= slot.item.buyPrice)
             {
                 PlayerStats.Instance.Coins -= slot.item.buyPrice;
+                PlayerStats.Instance.coinsTxt.text = "Coins: " + PlayerStats.Instance.Coins.ToString();
                 UpdateContent();
                 slot.itemButton.onClick.RemoveAllListeners();
                 slot.itemButton.interactable = false;
