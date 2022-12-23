@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe30b2d77b3f8ff459d22640995d3ae6, type: 3}
+  m_Name: Blue Shirt
+  m_EditorClassIdentifier: 
+  buyPrice: 20
+  clothingList:
+  - {fileID: -1009250739, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: 890366521, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: 95038884, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: -450052141, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: -1177393697, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: 233982586, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: -671135851, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: -295068371, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}
+  - {fileID: 2141317796, guid: d00cbc2c99d636f47a69ce35fc2c1999, type: 3}

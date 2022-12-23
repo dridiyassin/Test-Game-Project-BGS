@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe30b2d77b3f8ff459d22640995d3ae6, type: 3}
+  m_Name: Purple Shirt
+  m_EditorClassIdentifier: 
+  buyPrice: 25
+  clothingList:
+  - {fileID: 1233758372, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: 604970219, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: 465055077, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: 1951780873, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: -394103642, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: -424361629, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: -1244350656, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: -1521192741, guid: c5f692c311a47a0409304c6f7520add2, type: 3}
+  - {fileID: -234454138, guid: c5f692c311a47a0409304c6f7520add2, type: 3}

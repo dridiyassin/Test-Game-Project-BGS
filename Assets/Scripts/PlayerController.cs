@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    public SpriteRenderer torsoRenderer;
+    public SpriteRenderer legsRenderer;
+    public SpriteRenderer hairRenderer;
 
     Vector2 movement;
 
@@ -50,6 +53,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Walking", true);
             animator.SetFloat("Walking_Dir", WalkDir);
+            if (WalkDir == 3)
+                FlipAll(true);
+            else
+                FlipAll(false);
+
             if (fishingSystem.isFishing)
             {
                 fishingSystem.StopFishing();
@@ -60,10 +68,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Player Flips when walk left
-        if (WalkDir == 3)
-            FlipAll(true);
-        else
-            FlipAll(false);
+       
 
         //Stop Fishing if fishing
         
@@ -89,10 +94,9 @@ public class PlayerController : MonoBehaviour
     void FlipAll(bool cond)
     {
         spriteRenderer.flipX = cond;
-        foreach (SpriteRenderer sprR in rendererChilds)
-        {
-            sprR.flipX = cond;
-        }
+        torsoRenderer.flipX = cond;
+        legsRenderer.flipX = cond;
+        hairRenderer.flipX = cond;
     }
 
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe30b2d77b3f8ff459d22640995d3ae6, type: 3}
   m_Name: White TShirt
   m_EditorClassIdentifier: 
+  buyPrice: 10
   clothingList:
   - {fileID: -539608097, guid: 85ad734f7072d374e95d6f2daf46080e, type: 3}
   - {fileID: -2119593946, guid: 85ad734f7072d374e95d6f2daf46080e, type: 3}

@@ -93,10 +93,15 @@ public class ShopContent : MonoBehaviour
         slot.itemButton.interactable = true;
         slot.itemButton.onClick.AddListener(delegate
         {
-            PlayerStats.Instance.Coins -= slot.item.buyPrice;
-            Inventory.Instance.AddItem(slot.item);
-            UpdateContent();
-            slot.itemButton.onClick.RemoveAllListeners();
+            if (PlayerStats.Instance.Coins >= slot.item.buyPrice)
+            {
+                PlayerStats.Instance.Coins -= slot.item.buyPrice;
+                UpdateContent();
+                slot.itemButton.onClick.RemoveAllListeners();
+                slot.itemButton.interactable = false;
+                Inventory.Instance.AddItem(slot.item);
+                
+            }
         });
     }
 }

@@ -30,15 +30,23 @@ public class ClothingInventory : MonoBehaviour
     {
         UpdateUI();
     }
-
+    void ClearUI()
+    {
+        foreach (var slot in slots)
+        {
+            slot.slotButton.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = false;
+        }
+    }
     public void UpdateUI()
     {
+        ClearUI();
         List<Clothing> items = Inventory.Instance.clothingInventory;
 
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i] != null)
             {
+                slots[i].slotButton.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
                 slots[i].slotButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = items[i].clothingList[0];
                 slots[i].slotItem = items[i];
                 SetButtonEvent(slots[i]);

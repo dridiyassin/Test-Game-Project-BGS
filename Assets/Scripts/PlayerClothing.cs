@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+
+
+
 using System;
 
 public class PlayerClothing : MonoBehaviour
@@ -53,7 +55,6 @@ public class PlayerClothing : MonoBehaviour
         else
         {
             torso.gameObject.SetActive(false);
-            ClearClips(torsoClips);
         }
 
         if (hairClothing != null)
@@ -64,7 +65,6 @@ public class PlayerClothing : MonoBehaviour
         else
         {
             hair.gameObject.SetActive(false);
-            ClearClips(hairClips);
         }
     }
     public void SetClothing(Clothing clothingItem)
@@ -125,46 +125,14 @@ public class PlayerClothing : MonoBehaviour
     void UpdateClothesClip(AnimationClip clip, Sprite[] view, Transform affected)
     {
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = affected.name;
-        spriteBinding.propertyName = "m_Sprite";
+      
 
-        ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[4];
-
-        spriteKeyFrames[0].time = 0f;
-        spriteKeyFrames[0].value = view[0];
-
-        spriteKeyFrames[1].time = 0.01f;
-        spriteKeyFrames[1].value = view[1];
-
-        spriteKeyFrames[2].time = 0.025f;
-        spriteKeyFrames[2].value = view[0];
-
-        spriteKeyFrames[3].time = 0.05f;
-        spriteKeyFrames[3].value = view[2];
-
-
-        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteKeyFrames);
-
-        
 
     }
 
     void UpdateClothesIdleClip(AnimationClip clip, Sprite idleClothing, Transform affected)
     {
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = affected.name;
-        spriteBinding.propertyName = "m_Sprite";
-
-        ObjectReferenceKeyframe[] spriteIdleKeyFrames = new ObjectReferenceKeyframe[1];
-
-        spriteIdleKeyFrames[0].time = 0f;
-        spriteIdleKeyFrames[0].value = idleClothing;
-
-        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteIdleKeyFrames);
     }
 
 
@@ -172,19 +140,6 @@ public class PlayerClothing : MonoBehaviour
     void UpdateHairClip(AnimationClip clip, Sprite view, Transform affected)
     {
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = affected.name;
-        spriteBinding.propertyName = "m_Sprite";
-
-        ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[1];
-
-        spriteKeyFrames[0].time = 0f;
-        spriteKeyFrames[0].value = view;
-
-
-
-        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteKeyFrames);
 
 
 
@@ -193,16 +148,6 @@ public class PlayerClothing : MonoBehaviour
     void UpdateHairIdleClip(AnimationClip clip, Sprite idleClothing, Transform affected)
     {
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = affected.name;
-        spriteBinding.propertyName = "m_Sprite";
-
-        ObjectReferenceKeyframe[] spriteIdleKeyFrames = new ObjectReferenceKeyframe[1];
-
-        spriteIdleKeyFrames[0].time = 0f;
-        spriteIdleKeyFrames[0].value = idleClothing;
-
-        AnimationUtility.SetObjectReferenceCurve(clip, spriteBinding, spriteIdleKeyFrames);
+      
     }
 }

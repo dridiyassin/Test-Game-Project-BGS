@@ -25,6 +25,7 @@ public class InventoryContent : MonoBehaviour
         foreach (var slot in slots)
         {
             slot.sprite = null;
+            slot.enabled = false;
         }
     }
     public void UpdateUI()
@@ -33,7 +34,7 @@ public class InventoryContent : MonoBehaviour
         for (int i = 0; i < Inventory.Instance.itemsInventory.Count; i++)
         {
             Debug.Log("Rerendring " + slots[i]);
- 
+                slots[i].enabled = true;
                 slots[i].sprite = Inventory.Instance.itemsInventory[i].icon;
 
         }

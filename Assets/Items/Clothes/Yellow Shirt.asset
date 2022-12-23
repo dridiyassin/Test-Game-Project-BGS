@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe30b2d77b3f8ff459d22640995d3ae6, type: 3}
   m_Name: Yellow Shirt
   m_EditorClassIdentifier: 
-  buyPrice: 0
-  clothingList: []
+  buyPrice: 20
+  clothingList:
+  - {fileID: -1198808753, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -485406872, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -54025404, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -296081026, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: 606272575, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -1354595529, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -505765539, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -1061987017, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
+  - {fileID: -503323281, guid: 5a63fbf7b4cf4b348b7668597ae3a6c0, type: 3}
