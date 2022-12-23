@@ -8,23 +8,45 @@ public class Inventory : MonoBehaviour
     public List<Clothing> clothingInventory = new List<Clothing>();
     public List<Item> itemsInventory = new List<Item>();
 
+    int maxSlots;
 
     public static Inventory Instance;
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        Instance = this;
+
+        
+    }
+    private void Start()
+    {
+        maxSlots = InventoryContent.Instance.slots.Length;
     }
 
 
-    
     public void AddItem(Item item)
     {
-        itemsInventory.Add(item);
+        if (itemsInventory.Count < maxSlots)
+        {
+            itemsInventory.Add(item);
+            InventoryContent.Instance.UpdateUI();
+        }
     }
 
     public void AddItem(Item[] items)
     {
-        itemsInventory.AddRange(items);
+        if (itemsInventory.Count < maxSlots)
+        {
+            itemsInventory.AddRange(items);
+            InventoryContent.Instance.UpdateUI();
+        }
+    }
+    public void RemoveItem(Item item)
+    {
+        if (itemsInventory.Count < maxSlots)
+        {
+            itemsInventory.Remove(item);
+            InventoryContent.Instance.UpdateUI();
+        }
     }
 
     // Update is called once per frame
